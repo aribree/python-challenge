@@ -1,17 +1,20 @@
+#Discrepancies
 from ast import Str
 import csv
 import os
 
+#Open Source Data File
 csvpath = os.path.join("..","resources", "budget+data.csv")
 
 with open(csvpath, newline ='') as csvfile:
     csvreader = csv.reader("csvfile", delimeter = ',')
-
+#Headers
 print("Financial Analysis")
 print("-------------------------")
 
 header = next(csvreader)
 
+#Input Variables
 count = 0
 total = 0
 average = 0
@@ -20,6 +23,8 @@ high_profit = 0
 high_loss = 0
 profit_loss_date = ""
 loss_date = ""
+
+#Loop through Data
 for row in csvreader:
     total += int(row[1])
     count += 1
@@ -32,8 +37,11 @@ for row in csvreader:
             if(current < high_loss):
                 high_loss = current
                 loss_date = str(row[0])
+#Totals
     average = total / count 
     print (total)
+    
+#Output File
 file = "analysis.txt"
 with open('analysis', 'w') as text:
     print(text)
